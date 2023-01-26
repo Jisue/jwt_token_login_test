@@ -1,0 +1,35 @@
+spring:
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+jwt:
+    header: Authorization
+    #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+    #echo 'jisue-spring-boot-jwt-token-test-secret-jisue-spring-boot-jwt-token-test-secret'|base64
+    secret: amlzdWUtc3ByaW5nLWJvb3Qtand0LXRva2VuLXRlc3Qtc2VjcmV0LWppc3VlLXNwcmluZy1ib290LWp3dC10b2tlbi10ZXN0LXNlY3JldAo=
+    #echo 'jisue-spring-boot-jwt-refresh-token-test-secret-jisue-spring-boot-jwt-refresh-token-test-secret'|base64
+    refresh: amlzdWUtc3ByaW5nLWJvb3Qtand0LXJlZnJlc2gtdG9rZW4tdGVzdC1zZWNyZXQtamlzdWUtc3ByaW5nLWJvb3Qtand0LXJlZnJlc2gtdG9rZW4tdGVzdC1zZWNyZXQK
+    #1분
+    access-token-validity-in-seconds: 60
+    #1일
+    refresh-token-validity-in-seconds: 86400
+
+logging:
+    level:
+      com.example: DEBUG
